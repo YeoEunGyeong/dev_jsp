@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+  </head>
+  <body>
+  <script type = "text/javascript">
+  $(document).ready(() => {
+	  start = () => {
+		  setInterval(autoReload, 2000);
+  } // 2초 간격으로 autoReload 호출 출력
+	  start();
+  });
+  </script>
+  <div id = "d_news">뉴스</div>
+      <script>
+    const autoReload = () => {
+    	console.log('autoReload 호출')
+        $.ajax({
+            type: "GET",
+            url: "newsList.jsp",
+            success: function (data) {
+              console.log(data);
+              $("#d_news").html(data);
+            },
+          });
+    }
+    </script>
+  </body>
+</html>
+<!-- 
+html은 순차적 진행
+자바 스크립트 코드의 위치에 따라 document.querySelector(id or class or ele)
+; 선언이 먼저
+ -->
